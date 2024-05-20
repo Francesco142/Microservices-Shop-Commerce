@@ -1,0 +1,18 @@
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: bsgateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: buyer-service
+          uri: 'http://localhost:8082'
+          predicates:
+            - Path=/api/buyer-service/**
+            
+        - id: stocker-service
+          uri: 'http://localhost:8083'
+          predicates:
+            - Path=/api/stocker-service/**
